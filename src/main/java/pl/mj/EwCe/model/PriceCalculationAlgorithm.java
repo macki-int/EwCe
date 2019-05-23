@@ -20,5 +20,33 @@ public class PriceCalculationAlgorithm {
     private Project project;
     private Product product;
 
+    public PriceCalculationAlgorithm(String algorithm, BigDecimal finalPrice, Date date) {
+        this.algorithm = algorithm;
+        this.finalPrice = finalPrice;
+        this.date = date;
+    }
 
+    public void setAlgorithmj(String algorithm) {
+        this.algorithm = algorithm;
+    }
+
+    public String getAlgorithm() {
+        return algorithm;
+    }
+
+    public void setFinalPrice(BigDecimal finalPrice) {
+        this.finalPrice = finalPrice;
+    }
+
+    public BigDecimal getFinalPrice() {
+        return finalPrice;
+    }
+
+    public void setDate(Date date){
+        this.date=date;
+    }
+
+    public Date getDate(){
+        return date;
+    }
 }
