@@ -1,9 +1,6 @@
 package pl.mj.EwCe.model;
 
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
+import javax.persistence.*;
 import java.math.BigDecimal;
 import java.util.Date;
 
@@ -15,9 +12,14 @@ public class PriceCalculationAlgorithm {
     private String algorithm;
     private BigDecimal finalPrice;
     private Date date;
-
+    @ManyToOne
+    @JoinColumn(name="user_id")
     private User user;
+    @ManyToOne
+    @JoinColumn(name="project_id")
     private Project project;
+    @ManyToOne
+    @JoinColumn(name="product_id")
     private Product product;
 
     public PriceCalculationAlgorithm(String algorithm, BigDecimal finalPrice, Date date) {

@@ -3,6 +3,7 @@ package pl.mj.EwCe.model;
 
 
 import javax.persistence.*;
+import java.util.List;
 
 @Entity
 public class User {
@@ -16,6 +17,9 @@ public class User {
     private String password;
     @Enumerated(EnumType.STRING)
     private Role role;
+    @OneToMany(mappedBy = "user", cascade = CascadeType.ALL, orphanRemoval = true)
+    private List<PriceCalculationAlgorithm> priceCalculationAlgorithms;
+
 
     public User(){
 

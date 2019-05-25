@@ -1,10 +1,8 @@
 package pl.mj.EwCe.model;
 
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
+import javax.persistence.*;
 import java.math.BigDecimal;
+import java.util.List;
 
 @Entity
 public class Product {
@@ -13,6 +11,9 @@ public class Product {
     private Long id;
     private String name;
     private BigDecimal price;
+    @OneToMany(mappedBy = "product", cascade = CascadeType.ALL, orphanRemoval = true)
+    private List<PriceCalculationAlgorithm> priceCalculationAlgorithms;
+
 
     public Product(){
 
