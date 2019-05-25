@@ -26,7 +26,7 @@ public class PriceCalculationAlgorithm {
         this.date = date;
     }
 
-    public void setAlgorithmj(String algorithm) {
+    public void setAlgorithm(String algorithm) {
         this.algorithm = algorithm;
     }
 
