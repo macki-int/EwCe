@@ -1,0 +1,3 @@
+layout index.html navi, left->last calculations, right->details, button-add, button-del, button-edit
+
+layout usuers.html navi, table, button-add, button-del,
