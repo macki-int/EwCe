@@ -33,6 +33,10 @@ public class User {
         this.role = role;
     }
 
+    public Long getId() {
+        return id;
+    }
+
     public void setFirstName(String firstName) {
         this.firstName = firstName;
     }
