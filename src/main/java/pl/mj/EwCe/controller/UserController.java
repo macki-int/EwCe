@@ -1,11 +1,11 @@
 package pl.mj.EwCe.controller;
 
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
-import pl.mj.EwCe.model.User;
-import pl.mj.EwCe.repository.UserRepository;
+        import org.springframework.web.bind.annotation.RequestMapping;
+        import org.springframework.web.bind.annotation.RestController;
+        import pl.mj.EwCe.model.User;
+        import pl.mj.EwCe.repository.UserRepository;
 
-import java.util.List;
+        import java.util.List;
 
 @RestController
 @RequestMapping("/users")
