@@ -28,6 +28,10 @@ public class PriceCalculationAlgorithm {
         this.date = date;
     }
 
+    public PriceCalculationAlgorithm(){
+
+    }
+
     public void setAlgorithm(String algorithm) {
         this.algorithm = algorithm;
     }
