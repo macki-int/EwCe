@@ -25,6 +25,12 @@ public class UserController {
         return userRepository.findAll();
     }
 
+    @GetMapping("/{id}")
+    public User getUserById(Long id) {
+        return userRepository.findById(id)
+                .orElseThrow(() -> new RuntimeException("User do not exist in database"));
+    }
+
     @PostMapping
     public List<User> getAll() {
         return userRepository.findAll();
