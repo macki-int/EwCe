@@ -1,6 +1,9 @@
 package pl.mj.EwCe.controller;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.PageRequest;
+import org.springframework.data.domain.Pageable;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -21,9 +24,14 @@ public class UserController {
     }
 
     @GetMapping
-    public List<User> get() {
-        return userRepository.findAll();
+    public Page<User> getAll() {
+        return userRepository.findAll(PageRequest.of(0, 3));
     }
+
+//    @GetMapping
+//    public List<User> getAll() {
+//        return userRepository.findAll();
+//    }
 
     @GetMapping("/{id}")
     public User getUserById(Long id) {
@@ -31,9 +39,9 @@ public class UserController {
                 .orElseThrow(() -> new RuntimeException("User do not exist in database"));
     }
 
-    @PostMapping
-    public List<User> getAll() {
-        return userRepository.findAll();
-    }
+//    @PostMapping
+//    public List<User> getAll() {
+//        return userRepository.findAll();
+//    }
 
 }
