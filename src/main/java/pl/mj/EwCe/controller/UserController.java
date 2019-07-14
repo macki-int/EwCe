@@ -33,6 +33,9 @@ public class UserController {
 //        return userRepository.findAll();
 //    }
 
+
+
+
     @GetMapping("/{id}")
     public User getUserById(Long id) {
         return userRepository.findById(id)

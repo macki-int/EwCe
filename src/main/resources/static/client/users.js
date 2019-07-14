@@ -6,6 +6,9 @@ function reloadTableUsers() {
             const $trUserTemplate = $("#tr-user-template");
             const $tbody = $("tbody");
             // $tbody.children("tr:not(#tr-user-template)").remove();
+
+
+
             for (let i = 0; i < users.length; i++) {
                 const user = users[i];
                 const $trUser = $trUserTemplate.clone();

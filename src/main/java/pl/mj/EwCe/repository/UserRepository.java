@@ -8,5 +8,5 @@ import pl.mj.EwCe.model.User;
 
 @Repository
 public interface UserRepository extends JpaRepository<User, Long> {
-    Page<User> findAll(Pageable pageable);
+    //Page<User> findAll(Pageable pageable);
 }
