@@ -4,10 +4,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageRequest;
 import org.springframework.data.domain.Pageable;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 import pl.mj.EwCe.model.User;
 import pl.mj.EwCe.repository.UserRepository;
 
@@ -24,12 +21,12 @@ public class UserController {
     }
 
     @GetMapping
-    public Page<User> getAll() {
-        return userRepository.findAll(PageRequest.of(0, 3));
+    public Page<User> getAllUsers(@RequestParam("page") int page, @RequestParam("size") int size) {
+        return userRepository.findAll(PageRequest.of(page, size));
     }
 
 //    @GetMapping
-//    public List<User> getAll() {
+//    public List<User> getAllUsers() {
 //        return userRepository.findAll();
 //    }
 
