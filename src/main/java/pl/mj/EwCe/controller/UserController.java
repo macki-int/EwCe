@@ -34,7 +34,7 @@ public class UserController {
 
 
     @GetMapping("/{id}")
-    public User getUserById(Long id) {
+    public User getUserById(@PathVariable long id) {
         return userRepository.findById(id)
                 .orElseThrow(() -> new RuntimeException("User do not exist in database"));
     }
