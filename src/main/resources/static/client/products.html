@@ -38,44 +38,85 @@
     </div>
 </div>
 <p></p>
-<div class="row">
-    <div class="col">
-        <div class="card">
-            <table id="tbale-products" class="table table-hover">
-                <thead>
-                <tr>
-                    <th scope="col">#</th>
-                    <th scope="col">Nazwa</th>
-                    <th scope="col">Cena</th>
-                    <!--                TODO pobieranie wycen gdzie pojawił się wyrób-->
-                </tr>
-                </thead>
-                <tbody>
-                <tr id="tr-product-template">
-                    <td id="td-product-id"></td>
-                    <td id="td-product-name"></td>
-                    <td id="td-product-price"></td>
-                </tr>
-                </tbody>
-            </table>
+<div class="container-fluid">
+    <div class="row">
+        <div class="col-md-8">
+            <div class="card">
+                <table id="table-products" class="table table-hover">
+                    <thead>
+                    <tr>
+                        <th scope="col">#</th>
+                        <th scope="col">Nazwa</th>
+                        <th scope="col">Cena</th>
+                        <th scope="col">Waluta</th>
+                        <th scope="col">Jm</th>
+                        <!--                TODO button do pobierania wycen gdzie pojawił się wyrób-->
+                    </tr>
+                    </thead>
+                    <tbody>
+                    <tr id="tr-product-template">
+                        <td id="td-product-id"></td>
+                        <td id="td-product-name"></td>
+                        <td id="td-product-price"></td>
+                        <td id="td-product-currency"></td>
+                        <td id="td-product-unit"></td>
+                    </tr>
+                    </tbody>
+                </table>
+            </div>
         </div>
-    </div>
-    <div class="col">
-        <div class="card">
-            <div class="row">
-                <div class="col-md">
-                    <form>
-                        <div class="form-group">
-                            <div class="col-md-12">
-                                <label class="form-control-sm" for="inputId">id</label>
-                                <input type="text" readonly class="form-control" id="inputId">
+        <div class="col-md-4">
+            <div class="card">
+                <div class="row">
+                    <div class="col">
+                        <form>
+                            <div class="form-group">
+                                <div class="col-md-12">
+                                    <label class="form-control-sm" for="input-product-id">id</label>
+                                    <input type="text" readonly class="form-control" id="input-product-id">
+                                </div>
                             </div>
-                        </div>
+                            <div class="form-group">
+                                <div class="col-md-12">
+                                    <label class="form-control-sm" for="input-product-name">Nazwa wyrobu</label>
+                                    <input type="text" class="form-control" id="input-product-name">
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <div class="col-md-12">
+                                    <label class="form-control-sm" for="input-product-price">Cena wyrobu</label>
+                                    <input type="text" class="form-control" id="input-product-price">
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <div class="col-md-12">
+                                    <label class="form-control-sm" for="input-product-currency">Walute</label>
+                                    <input type="text" class="form-control" id="input-product-currency">
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <div class="col-md-12">
+                                    <label class="form-control-sm" for="input-product-unit">Jm</label>
+                                    <input type="text" class="form-control" id="input-product-unit">
+                                </div>
+                            </div>
+
+                            <div class="text-right">
+                                <div class="col-md-12">
+                                    <div class="btn-group" role="group" aria-label="buttons-group">
+                                        <button type="button" class="btn btn-outline-primary btn-sm" id="button-delete">Delete</button>
+                                        <button type="button" class="btn btn-outline-primary btn-sm" id="button-edit">Edit</button>
+                                        <button type="button" class="btn btn-outline-primary btn-sm" id="button-new">New</button>
+                                    </div>
+                                </div>
+                            </div>
+                            <p></p>
                     </form>
                 </div>
             </div>
         </div>
     </div>
+</div>
 </div>
 </body>
 </html>
