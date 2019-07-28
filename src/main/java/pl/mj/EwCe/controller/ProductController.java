@@ -3,9 +3,7 @@ package pl.mj.EwCe.controller;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageRequest;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 import pl.mj.EwCe.model.Product;
 import pl.mj.EwCe.repository.ProductRepository;
 
@@ -22,8 +20,13 @@ public class ProductController {
     }
 
     @GetMapping
-    public Page<Product> get(){
-        return productRepository.findAll(PageRequest.of(0,3));
+    public Page<Product> getAllProducts(@RequestParam ("page") int page, @RequestParam("size") int size){
+        return productRepository.findAll(PageRequest.of(page,size));
+    }
+
+    @DeleteMapping("/{id}")
+    public void deleteProduct(@PathVariable long id){
+        productRepository.deleteById(id);
     }
 
 }
