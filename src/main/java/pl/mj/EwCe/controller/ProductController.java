@@ -7,6 +7,7 @@ import org.springframework.web.bind.annotation.*;
 import pl.mj.EwCe.model.Product;
 import pl.mj.EwCe.repository.ProductRepository;
 
+import javax.websocket.server.PathParam;
 import java.util.List;
 
 @RestController
@@ -24,9 +25,16 @@ public class ProductController {
         return productRepository.findAll(PageRequest.of(page,size));
     }
 
+    @GetMapping("/{id]")
+    public Product product(@PathVariable long id){
+        return productRepository.findById(id)
+                .orElseThrow(()-> new RuntimeException("Nie znaleziono produktu"));
+    }
+
     @DeleteMapping("/{id}")
     public void deleteProduct(@PathVariable long id){
         productRepository.deleteById(id);
     }
+
 
 }

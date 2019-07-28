@@ -25,3 +25,5 @@ function reloadTableProduct (){
         }
     })
 }
+
+reloadTableProduct();
