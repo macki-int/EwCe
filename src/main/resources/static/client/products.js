@@ -1,8 +1,8 @@
 const SIZE = 5;
 var page = 0;
 
-function reloadTableProduct (){
-    $.ajaxj({
+function reloadTableProducts (){
+    $.ajax({
         url: "http://localhost:8080/products?page=" + page + "&size=" + SIZE,
         method: "GET",
         dataType: "JSON",
@@ -23,7 +23,27 @@ function reloadTableProduct (){
                 $tbody.append($trProduct);
             }
         }
-    })
+    });
 }
 
-reloadTableProduct();
+function getProductById(id){
+    $.ajax({
+        url:"http://localhost:8080/products/" + id,
+        method: "GET",
+        dataType: "JSON",
+        success: function (product) {
+            $("#input-id").val(product.id);
+            $("#input-id").val(product.name);
+            $("#input-id").val(product.price);
+            $("#input-id").val(product.currency);
+            $("#input-id").val(product.unit);
+        }
+    });
+}
+
+$("#table-products").on("clik", "tr", function () {
+    var id = $(this).find("td:first-child").text();
+    getProductById(id);
+});
+
+reloadTableProducts();
