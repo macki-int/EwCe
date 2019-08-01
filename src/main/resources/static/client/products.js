@@ -12,8 +12,8 @@ function reloadTableProducts (){
             $tbody.children("tr:not(#tr-product-template)").remove();
 
             for(let i = 0; i< products.content.length; i++){
-                const product = product.content[i];
-                const $trProduct = $trPorductTemplete.clon();
+                const product = products.content[i];
+                const $trProduct = $trPorductTemplete.clone();
                 $trProduct.removeAttr("id");
                 $trProduct.children(".td-product-id").text(product.id);
                 $trProduct.children(".td-product-name").text(product.name);
