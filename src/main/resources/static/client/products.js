@@ -1,7 +1,7 @@
 const SIZE = 5;
 var page = 0;
 
-function reloadTableProducts (){
+function reloadTableProducts() {
     $.ajax({
         url: "http://localhost:8080/products?page=" + page + "&size=" + SIZE,
         method: "GET",
@@ -11,7 +11,7 @@ function reloadTableProducts (){
             const $tbody = $("tbody");
             $tbody.children("tr:not(#tr-product-template)").remove();
 
-            for(let i = 0; i< products.content.length; i++){
+            for (let i = 0; i < products.content.length; i++) {
                 const product = products.content[i];
                 const $trProduct = $trPorductTemplete.clone();
                 $trProduct.removeAttr("id");
@@ -26,17 +26,17 @@ function reloadTableProducts (){
     });
 }
 
-function getProductById(id){
+function getProductById(id) {
     $.ajax({
-        url:"http://localhost:8080/products/" + id,
+        url: "http://localhost:8080/products/" + id,
         method: "GET",
         dataType: "JSON",
         success: function (product) {
-            $("#input-id").val(product.id);
-            $("#input-id").val(product.name);
-            $("#input-id").val(product.price);
-            $("#input-id").val(product.currency);
-            $("#input-id").val(product.unit);
+            $("#input-product-id").val(product.id);
+            $("#input-product-name").val(product.name);
+            $("#input-product-price").val(product.price);
+            $("#input-product-currency").val(product.currency);
+            $("#input-product-unit").val(product.unit);
         }
     });
 }
