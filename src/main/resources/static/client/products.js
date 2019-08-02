@@ -7,13 +7,13 @@ function reloadTableProducts() {
         method: "GET",
         dataType: "JSON",
         success: function (products) {
-            const $trPorductTemplete = $("#tr-product-templete");
+            const $trProductTemplete = $("#tr-product-template");
             const $tbody = $("tbody");
             $tbody.children("tr:not(#tr-product-template)").remove();
 
             for (let i = 0; i < products.content.length; i++) {
                 const product = products.content[i];
-                const $trProduct = $trPorductTemplete.clone();
+                const $trProduct = $trProductTemplete.clone();
                 $trProduct.removeAttr("id");
                 $trProduct.children(".td-product-id").text(product.id);
                 $trProduct.children(".td-product-name").text(product.name);
@@ -22,6 +22,7 @@ function reloadTableProducts() {
                 $trProduct.children(".td-product-unit").text(product.unit);
                 $tbody.append($trProduct);
             }
+
         }
     });
 }
@@ -41,9 +42,10 @@ function getProductById(id) {
     });
 }
 
-$("#table-products").on("clik", "tr", function () {
+$("#table-products").on("click", "tr", function () {
     var id = $(this).find("td:first-child").text();
     getProductById(id);
 });
+
 
 reloadTableProducts();
