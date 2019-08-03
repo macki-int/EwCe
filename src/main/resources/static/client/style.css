@@ -2,6 +2,10 @@
     display: none;
 }
 
+#tr-product-template {
+    display: none;
+}
+
 .form-control{
     font-weight: bold;
 }
