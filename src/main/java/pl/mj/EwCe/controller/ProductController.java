@@ -1,12 +1,13 @@
 package pl.mj.EwCe.controller;
 
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.PageRequest;
+import org.springframework.web.bind.annotation.*;
 import pl.mj.EwCe.model.Product;
 import pl.mj.EwCe.repository.ProductRepository;
 
+import javax.websocket.server.PathParam;
 import java.util.List;
 
 @RestController
@@ -20,8 +21,20 @@ public class ProductController {
     }
 
     @GetMapping
-    public List<Product> get(){
-        return productRepository.findAll();
+    public Page<Product> getAllProducts(@RequestParam ("page") int page, @RequestParam("size") int size){
+        return productRepository.findAll(PageRequest.of(page,size));
     }
+
+    @GetMapping("/{id]")
+    public Product product(@PathVariable long id){
+        return productRepository.findById(id)
+                .orElseThrow(()-> new RuntimeException("Nie znaleziono produktu"));
+    }
+
+    @DeleteMapping("/{id}")
+    public void deleteProduct(@PathVariable long id){
+        productRepository.deleteById(id);
+    }
+
 
 }
