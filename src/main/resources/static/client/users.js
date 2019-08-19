@@ -1,12 +1,17 @@
-const SIZE = 5;
-var page = 0;
+const PAGE_SIZE = 5;
+var currentPage = 0;
+var totalPages = 0;
+
 
 function reloadTableUsers() {
     $.ajax({
-        url: "http://localhost:8080/users?page=" + page + "&size=" + SIZE,
+        url: "http://localhost:8080/users?page=" + currentPage + "&size=" + PAGE_SIZE,
         method: "GET",
         dataType: "JSON",
         success: function (users) {
+
+            reloadPaginationTableUsers(users);
+
             const $trUserTemplate = $("#tr-user-template");
             const $tbody = $("tbody");
             $tbody.children("tr:not(#tr-user-template)").remove();
@@ -24,6 +29,7 @@ function reloadTableUsers() {
             }
         }
     });
+
 }
 
 function getUserById(id) {
@@ -41,13 +47,38 @@ function getUserById(id) {
     });
 }
 
+function reloadPaginationTableUsers(users){
+    if (users.totalPages > 1){
+        totalPages = users.totalPages;
+        currentPage = users.number;
+    }
+
+}
+
+$('#pagination-demo').twbsPagination({
+        totalPages: totalPages,
+        visiblePages: 5,
+        onPageClick: function (event, page) {
+            $('#page-content').text('Page ' + page);
+        }
+});
+
+
 $("#table-users").on("click", "tr", function () {
     var id = $(this).find("td:first-child").text();
     getUserById(id);
 });
 
-$("#button-new").on('click', function () {
-    console.log('new');
+$("#button-new").on("click", function () {
+    console.log("new");
+});
+
+$("#button-update").on("click", function () {
+    console.log("update");
+});
+
+$("#button-delete").on("click", function () {
+    console.log("delete");
 });
 
 reloadTableUsers();
