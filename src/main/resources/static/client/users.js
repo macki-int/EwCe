@@ -51,17 +51,27 @@ function reloadPaginationTableUsers(users){
     if (users.totalPages > 1){
         totalPages = users.totalPages;
         currentPage = users.number;
+
+                var options = {
+                    currentPage: currentPage,
+                    totalPages: totalPages,
+                    shouldShowPage:function(type, page, current){
+                        switch(type)
+                        {
+                            case "first":
+                            case "last":
+                                return false;
+                            default:
+                                return true;
+                        }
+                    }
+                }
+
     }
 
 }
 
-$('#pagination-demo').twbsPagination({
-        totalPages: totalPages,
-        visiblePages: 5,
-        onPageClick: function (event, page) {
-            $('#page-content').text('Page ' + page);
-        }
-});
+$('#pagination').bootstrapPaginator(options);
 
 
 $("#table-users").on("click", "tr", function () {
